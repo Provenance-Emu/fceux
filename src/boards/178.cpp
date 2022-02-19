@@ -152,7 +152,9 @@ static void M178SndClk(int a) {
 	SensorDelay += a;
 	if(SensorDelay > 0x32768) {
 		SensorDelay -= 32768;
+#if 0 // Provenance
 		GetMouseData (MouseData);
+#endif
 		lastclick = click;
 		click = MouseData[2] & 1;	// to prevent from continuos IRQ trigger if button is held.
 									// actual circuit is just a D-C-R edge detector for IR-sensor

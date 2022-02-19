@@ -828,7 +828,7 @@ void FCEUI_Emulate(uint8 **pXBuf, int32 **SoundBuf, int32 *SoundBufSize, int ski
 	extern int KillFCEUXonFrame;
 	if (KillFCEUXonFrame && (FCEUMOV_GetFrame() >= KillFCEUXonFrame))
 		DoFCEUExit();
-#else
+#elseif 0 //Provenance
 		extern int KillFCEUXonFrame;
 	if (KillFCEUXonFrame && (FCEUMOV_GetFrame() >= KillFCEUXonFrame))
 		exit(0);
@@ -1184,7 +1184,9 @@ void FCEUI_SetRegion(int region, int notify)
 	normalscanlines += newppu;
 	totalscanlines = normalscanlines + (overclock_enabled ? postrenderscanlines : 0);
 	FCEUI_SetVidSystem(pal_emulation);
-	RefreshThrottleFPS();
+#if 0 //Provenance
+    RefreshThrottleFPS();
+#endif
 #ifdef __WIN_DRIVER__
 	UpdateCheckedMenuItems();
 	PushCurrentVideoSettings();
